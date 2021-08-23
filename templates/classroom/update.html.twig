@@ -1,0 +1,33 @@
+{% extends "base.html.twig" %}
+{% block title %} Update classroom{% endblock %}
+{% block body %}
+ <div class="container-fluid mt-3">
+ <h2 class="text-center mt-2">Update classroom</h2>
+    <div class="col-md-6"></div>
+ {{ form_start (form) }}
+
+        <div class="form-group">
+          {{ form_label (form.ClassName) }}
+          {{ form_widget (form.ClassName, {'attr': {'class':'form-control'}}) }}
+        </div>
+        <div class="form-group">
+          {{ form_label (form.NameTeacher) }}
+          {{ form_widget (form.NameTeacher, {'attr': {'class':'form-control'}}) }}
+        </div>
+        <div class="form-group">
+          {{ form_label (form.Description) }}
+          {{ form_widget (form.Description, {'attr': {'class':'form-control'}}) }}
+        </div>
+        <div class="form-group">
+          {{ form_label (form.students) }}
+          {{ form_widget (form.students, {'attr': {'class':'form-control'}}) }}
+        </div>
+
+        <div class="form-group">
+        <button class="btn btn-primary text-center">Update</button>
+        </div>
+
+ {{ form_end (form) }}
+     
+ </div>
+{% endblock %}
