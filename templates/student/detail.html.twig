@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Student Infomation{% endblock %}
+
+{% block body %}
+<div Class="container mt-3">
+ <a class="btn btn-primary" href="{{path("student_list")}}">Student list</a>
+ <table class="table">
+ 	<thead>
+ 		<tr>
+ 			<th scope="col">Student ID</th>
+ 			<th scope="col">Student Name</th>
+ 			<th scope="col">Address</th>
+             <th scope="col">Email</th>
+			  <th scope="col">Birthday</th>
+			  <th scope="col">Phone Number</th>
+			   <th scope="col">Avatar student </th>
+			   <th scope="col">Classroom</th>
+             <th scope="col">Actions</th>
+ 		</tr>
+ 	</thead>
+ 	<tbody>
+
+         
+ 		<tr>
+ 			<td scope="row">{{student.id}}</td>
+ 			<td scope="row">{{student.NameStudent}}</td>
+            <td scope="row">{{student.Address}}</td>
+            <td scope="row">{{student.Email}}</td>
+			<td scope="row">{{student.Birthday | date("d/m/Y") }}</td>
+			<td scope="row">{{student.PhoneNumber}}</td>
+			<td scope="row">
+                   
+                        <img src="{{ asset ('photos/' ~ student.photo) }}" width="100px" height="120px">
+                             
+                </td>
+			
+			<td scope="row">
+                {% for a in student.classroom %}
+                  <a href="{{ path('classrooms_detail', {'id' : a.id }) }}">
+                       {{ a.classname }}
+                  </a>
+                  <br>
+                {% endfor %}
+            </td>
+ 			
+ 			<td scope="row">
+             <a class="btn btn-info" href="{{path('student_update',{'id': student.id})}}">Update</a>
+             <a class="btn btn-info" href="{{path('student_delete',{'id': student.id})}}">Delete</a>
+             </td>
+             
+ 		</tr>
+ 	</tbody>
+ </table>
+</div>
+{% endblock %}
