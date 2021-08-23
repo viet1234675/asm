@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Classroom Infomation{% endblock %}
+
+{% block body %}
+<div class="container mt-3">
+{% for flash in app.flashes("Success") %}
+<p class="alert alert-primary">{{flash}}</p>
+{% endfor %}
+ {% for flash in app.flashes("Error") %}
+        <p class="alert alert-primary"> {{ flash }} </p>
+ {% endfor %}
+
+</div>
+
+<div class="container-fluid">
+ <a class="btn btn-primary" href="{{path('classroom_create_cr')}}">Create Classroom</a>
+ <table class="table">
+ 	<thead>
+ 		<tr>
+ 			<th scope="col">Classroom ID</th>
+ 			<th scope="col">Classroom Name</th>
+ 			<th scope="col">Actions</th>
+ 		</tr>
+ 	</thead>
+ 	<tbody>
+     {% for classroom in classrooms %}
+         
+ 		<tr>
+ 			<td scope="row">{{classroom.id}}</td>
+ 			<td scope="row">{{classroom.classname}}</td>
+ 			<td scope="row">
+             <a class="btn btn-info" href="{{path('classroom_detail',{'id': classroom.id})}}">Detail</a>
+            <a class="btn btn-info" href="{{path('classroom_update',{'id': classroom.id})}}">Update</a>
+             <a class="btn btn-info" href="{{path('classroom_delete',{'id': classroom.id})}}"
+			                        onclick="return confirm('are you sure to delete ?')"
+			 
+			 >Delete</a>
+             </td>
+             
+ 		</tr>
+     {% endfor %}
+ 	</tbody>
+ </table>
+</div>
+{% endblock %}
