@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Teacher Infomation{% endblock %}
+
+{% block body %}
+<div Class="container mt-3">
+ <a class="btn btn-primary" href="{{path("teacher_list")}}">techer list</a>
+ <table class="table">
+ 
+ 	<thead>
+ 		<tr>
+ 			<th scope="col">Teacher ID</th>
+ 			<th scope="col">Teacher Name</th>
+ 			
+			   <th scope="col">Classroom</th>
+             <th scope="col">Actions</th>
+ 		</tr>
+ 	</thead>
+ 	<tbody>
+
+         
+ 		<tr>
+ 			<td scope="row">{{teacher.id}}</td>
+ 			<td scope="row">{{teacher.nameteacher}}</td>
+            <td scope="row">
+                {% for a in teacher.classroom %}
+                  <a href="{{ path('classroom_detail', {'id' : a.id }) }}">
+                       {{ a.classname }}
+                  </a>
+                  <br>
+                {% endfor %}
+            </td>
+ 			
+ 			<td scope="row">
+             <a class="btn btn-info" href="{{path('teacher_update',{'id': teacher.id})}}">Update</a>
+             <a class="btn btn-info" href="{{path('teacher_delete',{'id': teacher.id})}}">Delete</a>
+             </td>
+             
+ 		</tr>
+ 	</tbody>
+ </table>
+</div>
+{% endblock %}
