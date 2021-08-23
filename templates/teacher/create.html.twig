@@ -1,0 +1,27 @@
+{% extends "base.html.twig" %}
+{% block title %} Create teacher{% endblock %}
+{% block body %}
+ <div class="container-fluid mt-3">
+ <h2 class="text-center mt-2">Create teacher</h2>
+    <div class="col-md-6"></div>
+ {{ form_start (form) }}
+
+        <div class="form-group">
+          {{ form_label (form.name_teacher) }}
+          {{ form_widget (form.name_teacher, {'attr': {'class':'form-control'}}) }}
+        </div>
+        
+         <div class="form-group">
+          {{ form_label (form.Classroom) }}
+          {{ form_widget (form.Classroom, {'attr': {'class':'form-control'}}) }}
+        </div>
+        
+
+        <div class="form-group">
+        <button class="btn btn-primary text-center">Create</button>
+        </div>
+
+ {{ form_end (form) }}
+     
+ </div>
+{% endblock %}
